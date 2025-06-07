@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    
     public GameObject Target;
     public float MovementSpeed;
     public float StoppingDistance;
     public int Damage;
     public float TimeBtwnAttacks;
     public float MaxTimeBtwnAttacks;
+   
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
@@ -42,6 +44,11 @@ public class Enemy : MonoBehaviour
                 TimeBtwnAttacks = MaxTimeBtwnAttacks;
             }
         }
-        
+
+    }
+
+    private void OnDestroy()
+    {
+        WaveManager.instance.AliveEnemies.Remove(this);
     }
 }
