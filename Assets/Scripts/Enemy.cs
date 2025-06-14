@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     public int Damage;
     public float TimeBtwnAttacks;
     public float MaxTimeBtwnAttacks;
-   
+    public int Value;
     void Start()
     {
       
@@ -49,6 +49,11 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        WaveManager.instance.AliveEnemies.Remove(this);
+        if (WaveManager.instance != null && WaveManager.instance.AliveEnemies.Contains(this))
+        {
+            WaveManager.instance.AliveEnemies.Remove(this);
+        }
+
+        MoneyManager.instance.Money += Value;
     }
 }
