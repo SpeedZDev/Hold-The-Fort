@@ -139,6 +139,7 @@ MonoBehaviour:
   Damage: 10
   TimeBtwnAttacks: 0
   MaxTimeBtwnAttacks: 0
+  Value: 10
 --- !u!1001 &6418803006179705706
 PrefabInstance:
   m_ObjectHideFlags: 0
