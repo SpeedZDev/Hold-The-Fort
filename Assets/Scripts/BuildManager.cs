@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
+    public GameObject plane;
     public bool IsInBuildMode;
     public Camera FpsCam;
     public Camera BuildCamera;
@@ -49,6 +50,7 @@ public class BuildManager : MonoBehaviour
 
             if (IsInBuildMode)
             {
+                plane.SetActive(true);
                 BuildCamera.gameObject.SetActive(true);
                 FpsCam.gameObject.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
@@ -56,6 +58,7 @@ public class BuildManager : MonoBehaviour
             }
             else
             {
+                plane.SetActive(false);
                 FpsCam.gameObject.SetActive(true);
                 BuildCamera.gameObject.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
