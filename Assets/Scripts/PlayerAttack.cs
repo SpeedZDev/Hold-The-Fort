@@ -6,25 +6,31 @@ public class PlayerAttack : MonoBehaviour
 {
     
     public int damage;
+    Camera cam;
     void Start()
     {
-        
+        cam = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Camera cam = Camera.main;
+       
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             RaycastHit hit;
-            if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1.5f))
+            if (cam.isActiveAndEnabled) 
             {
-                if (hit.transform.TryGetComponent<Enemy>(out Enemy enemy))
+                if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1.5f))
                 {
-                    enemy.gameObject.GetComponent<Health>().health -= damage;
+                    if (hit.transform.TryGetComponent<Enemy>(out Enemy enemy))
+                    {
+                        enemy.gameObject.GetComponent<Health>().health -= damage;
+                    }
                 }
+
             }
+           
         }
     }
 }

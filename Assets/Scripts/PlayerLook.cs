@@ -5,23 +5,25 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public bool IsInFirstPerson;
+   
     public Transform Player;
     public float SensX;
     public float SensY;
     float XRotation = 0;
     void Start()
     {
-        if (IsInFirstPerson)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+
+        
+            
+        
+
         float MouseX = Input.GetAxis("Mouse X") * SensX * Time.deltaTime * 2;
         float MosueY = Input.GetAxis("Mouse Y") * SensY * Time.deltaTime * 2;
 

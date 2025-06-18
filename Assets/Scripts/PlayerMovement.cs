@@ -21,14 +21,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         MoveX = Input.GetAxisRaw("Horizontal");
-         MoveZ = Input.GetAxisRaw("Vertical");
-
-        IsGrounded = Physics.Raycast(transform.position, Vector3.down, PlayerHeight * 0.5f + 0.2f);
-        if(IsGrounded)
+        if (!BuildManager.instance.IsInBuildMode)
         {
-            rb.drag = GroundDrag;
+            MoveX = Input.GetAxisRaw("Horizontal");
+            MoveZ = Input.GetAxisRaw("Vertical");
+
+            IsGrounded = Physics.Raycast(transform.position, Vector3.down, PlayerHeight * 0.5f + 0.2f);
+            if (IsGrounded)
+            {
+                rb.drag = GroundDrag;
+            }
         }
+        
     }
 
     void FixedUpdate()
